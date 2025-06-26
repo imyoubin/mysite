@@ -22,11 +22,11 @@ public class UserController {
 		return "user/joinform";
 	}
 
-	// 회원가입 처리
+	// 회원가입
 	@PostMapping("/join")
 	public String join(@ModelAttribute UserVO userVO) {
 		System.out.println("UserController.join()");
 		userService.exeJoin(userVO);
-		return "user/join"; // 가입 완료 페이지
+		return "user/join"; 
 	}
 }
