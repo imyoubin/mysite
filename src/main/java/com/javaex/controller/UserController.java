@@ -1,17 +1,32 @@
 package com.javaex.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.javaex.service.UserService;
+import com.javaex.vo.UserVO;
 
 @Controller
 public class UserController {
 	
-	@RequestMapping(value="/user/joinform", method= {RequestMethod.GET, RequestMethod.POST})
-	public String index() {
-		System.out.println(" UserController.index()");
-		
+	@Autowired
+	private UserService userService;
+
+	// 회원가입 폼
+	@GetMapping("/joinform")
+	public String joinForm() {
+		System.out.println("UserController.joinForm()");
 		return "user/joinform";
 	}
 
+	// 회원가입 처리
+	@PostMapping("/join")
+	public String join(@ModelAttribute UserVO userVO) {
+		System.out.println("UserController.join()");
+		userService.exeJoin(userVO);
+		return "user/join"; // 가입 완료 페이지
+	}
 }

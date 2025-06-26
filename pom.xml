@@ -65,6 +65,11 @@
 	</dependency>
 
 
+	<dependency>
+		<groupId>com.javaex</groupId>
+		<artifactId>guestbook4</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
 	</dependencies>
 
 	<build>

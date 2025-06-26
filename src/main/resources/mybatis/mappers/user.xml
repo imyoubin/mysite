@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="user">
+
+    <insert id="insert" parameterType="com.javaex.vo.UserVO">
+        INSERT INTO users (id, password, name, gender)
+        VALUES (#{id}, #{password}, #{name}, #{gender});
+    </insert>
+
+    <select id="selectById" parameterType="String" resultType="com.javaex.vo.UserVO">
+        SELECT no, id, password, name, gender
+        FROM users
+        WHERE id = #{id}
+    </select>
+
+</mapper>
