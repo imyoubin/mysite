@@ -1,6 +1,6 @@
 package com.javaex.repository;
 
-import org.apache.jasper.compiler.Node.ELExpression;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,12 +10,11 @@ import com.javaex.vo.UserVO;
 public class RepositoryUserDAO {
 
     @Autowired
-    private ELExpression sqlSession;
+    private SqlSession sqlSession;
 
     // 회원가입
     public int insert(UserVO userVO) {
         System.out.println("RepositoryUserDAO.insert()");
-   
         return sqlSession.insert("user.insert", userVO);
     }
 
