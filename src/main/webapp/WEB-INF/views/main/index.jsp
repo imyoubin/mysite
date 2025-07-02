@@ -2,63 +2,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-	<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-	</head>
-	<body>
-	<!DOCTYPE html>
 
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
         <title>MySite</title>
-        <link rel="stylesheet" href="${requestScope.personList}/assets/css/reset.css">
-        <link rel="stylesheet" href="../../assets/css/mysite.css">
-        <link rel="stylesheet" href="../../assets/css/main.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mysite.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     </head>
 
     <body>
         <div class="wrap">
-            <header class="clearfix">
-                <h1><a href="">MySite</a></h1>
-              
-                <!--
-			    <ul class="clearfix">
-				    <li><span class="user-welcome">황일영 님 안녕하세요^^</span></li>
-				    <li>
-                        <a class="btn btn-white btn-sm" href="">로그아웃</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">정보수정</a>
-                    </li>
-			    </ul>
-                -->
-                 	
-               <ul class="clearfix">
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">로그인</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">회원가입</a>
-                    </li>
-                </ul>
-            </header>
-                 
-            <nav>
-                <ul class="clearfix">
-                    <li><a href="">입사지원서</a></li>
-                    <li><a href="">게시판</a></li>
-                    <li><a href="">갤러리</a></li>
-                    <li><a href="">방명록</a></li>
-                </ul>
-            </nav>
+        	<!-- 해더 + 네비 ------------------------------------>
+            <c:import url="/WEB-INF/views/include/header.jsp"></c:import>
+            <!-- 해더 + 네비 ------------------------------------>
 
             <div class="content clearfix">
                 <main>
                     <div id="main-home">
-                        <img class="profile" src="${requestScope.personList}/assets/images/profile.jpg">
+                        <img class="profile" src="${pageContext.request.contextPath}/assets/images/profile.jpg">
                         <div class="greeting-box">
                             <p class="greeting">
                                 안녕하세요!!<br>
@@ -85,15 +48,10 @@
                 </main>
             </div>
 
-            <footer>
-                <p>
-                    Copyright ⓒ 2026 임유빈. All right reserved  
-                </p>
-            </footer>
+			<!-- footer -->
+			<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+			<!-- //footer -->
+         
         </div>
     </body>
-</html>
-		
-	
-	</body>
 </html>

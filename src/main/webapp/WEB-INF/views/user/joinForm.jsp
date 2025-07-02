@@ -7,36 +7,42 @@
     <head>
         <meta charset="UTF-8">
         <title>MySite</title>
-        <link rel="stylesheet" href="../../assets/css/reset.css">
-        <link rel="stylesheet" href="../../assets/css/mysite.css">
-        <link rel="stylesheet" href="../../assets/css/user.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mysite.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user.css">
     </head>
 
     <body>
        <div class="wrap">
-            <header class="clearfix">
+           <header class="clearfix">
                 <h1><a href="">MySite</a></h1>
               
-                <!--
-			    <ul class="clearfix">
-				    <li><span class="user-welcome">황일영 님 안녕하세요^^</span></li>
-				    <li>
-                        <a class="btn btn-white btn-sm" href="">로그아웃</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">정보수정</a>
-                    </li>
-			    </ul>
-                -->
-                 	
-               <ul class="clearfix">
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">로그인</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">회원가입</a>
-                    </li>
-                </ul>
+              	<!-- 로그인 되었을때(세션에 값이 있을때) -->
+              	<c:if test="${sessionScope.authUser != null}">
+					<ul class="clearfix">
+						<li><span class="user-welcome"> ${sessionScope.authUser.name}님 안녕하세요^^</span></li>
+						<li>
+							<a class="btn btn-white btn-sm" href="">로그아웃</a>
+						</li>
+						<li>
+						    <a class="btn btn-white btn-sm" href="">정보수정</a>
+						</li>
+			   	 	</ul>
+              	</c:if>
+                
+	
+ 				<!-- 로그인 되지 않을때(세션에 값없을때) -->
+              	<c:if test="${sessionScope.authUser == null}">
+              		<ul class="clearfix">
+						<li>
+						    <a class="btn btn-white btn-sm" href="">로그인</a>
+						</li>
+						<li>
+						    <a class="btn btn-white btn-sm" href="">회원가입</a>
+						</li>
+				 	</ul>
+              	</c:if>
+				
             </header>
                  
             <nav>
@@ -70,27 +76,27 @@
                     </div>
 
                     <div id="user-joinform">
-                        
-                        <form class="form-box" action="" method="">
+                        <form class="form-box" action="http://localhost:8888/user/join" method="get">
                             <div class="info-row">
                                 <label class="info-title" for="txt-idcheck">아이디</label>
-                                <input id="txt-idcheck" type="text" name="" value="">
+                                <input id="txt-idcheck" type="text" name="id" value="">
                                 <button id="" class="btn btn-gray btn-input"  type="button">중복체크</button>
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-pwd">패스워드</label>
-                                <input id="txt-pwd" type="password" name="" value="">
+                                <input id="txt-pwd" type="password" name="password" value="">
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-name">이름</label>
-                                <input id="txt-name" type="text" name="" value="">
+                                <input id="txt-name" type="text" name="name" value="">
                             </div>
                             <div class="info-row">
                                 <span class="info-title">성별</span>
                                 <label>남</label>
-                                <input type="radio">
+                                <input type="radio" name="gender" value="male">
+                                
                                 <label>여</label>
-                                <input type="radio">
+                                <input type="radio" name="gender" value="female">
                             </div>
                             <div class="info-row">
                                 <span class="info-title">약관동의</span>
@@ -110,7 +116,7 @@
             
             <footer>
                 <p>
-                    Copyright ⓒ 2026 임유빈. All right reserved  
+                    Copyright ⓒ 2025 황일영. All right reserved  
                 </p>
             </footer>
 
